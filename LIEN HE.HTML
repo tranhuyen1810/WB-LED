@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chào mừng đến Công ty TNHH JUXUAN LED</title>
+
+    <!-- Thư viện font & icon -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: radial-gradient(circle at top left, #0f172a, #020617);
+            color: white;
+            text-align: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 3em;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            color: #38bdf8;
+        }
+
+        h2 {
+            font-size: 1.5em;
+            font-weight: 400;
+            color: #e2e8f0;
+        }
+
+        .glow {
+            text-shadow: 0 0 15px #38bdf8, 0 0 30px #0ea5e9, 0 0 45px #38bdf8;
+        }
+
+        .button {
+            margin-top: 40px;
+            padding: 14px 32px;
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #fff;
+            background: linear-gradient(90deg, #0ea5e9, #38bdf8);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px #0ea5e9;
+        }
+
+        .button:hover {
+            background: linear-gradient(90deg, #38bdf8, #0ea5e9);
+            box-shadow: 0 0 25px #38bdf8, 0 0 40px #0ea5e9;
+        }
+
+        .led {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #38bdf8;
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: sparkle 2s infinite ease-in-out;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0.2; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.4); }
+        }
+    </style>
+</head>
+<body>
+    <h1 class="glow">CHÀO MỪNG QUÝ KHÁCH</h1>
+    <h2 id="typed-text"></h2>
+
+    <button class="button" onclick="window.location.href='https://zalo.me/';">
+        Liên hệ ngay
+    </button>
+
+    <!-- Image upload area -->
+    <section style="width:100%;max-width:960px;margin:36px auto 0;text-align:left;padding:18px;background:rgba(255,255,255,0.02);border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,0.6);">
+        <h2 style="color:#cfeffd;margin:0 0 8px;font-size:1.25rem">Tải ảnh sản phẩm</h2>
+        <p style="color:var(--muted, #cbd5e1);margin:0 0 12px">Kéo thả hoặc chọn ảnh (jpg, png). Ảnh chỉ lưu tạm trên client trừ khi bạn chạy máy chủ tải lên.</p>
+
+        <div id="upload-area" style="border:2px dashed rgba(56,189,248,0.12);padding:18px;border-radius:10px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
+            <input id="file-input" type="file" accept="image/*" multiple style="display:none">
+            <button id="pick-btn" class="button" style="padding:10px 16px;">Chọn ảnh</button>
+            <div style="flex:1;min-height:64px;display:flex;align-items:center;"> 
+                <div id="drop-hint" style="color:#a9d8ff;opacity:0.9">Kéo & thả ảnh vào đây hoặc bấm "Chọn ảnh"</div>
+            </div>
+        </div>
+
+        <div id="preview-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px;margin-top:12px"></div>
+
+        <div style="margin-top:12px;display:flex;gap:10px;justify-content:flex-end">
+            <button id="submit-upload" class="button">Gửi lên server</button>
+            <button id="download-all" class="button secondary">Tải xuống tất cả</button>
+        </div>
+    </section>
+
+    <script>
+        // Hiệu ứng chữ tự gõ; từ công ty Juxuan Led
+        var typed = new Typed("#typed-text", {
+            strings: [
+                "Công ty TNHH JUXUAN LED  – Ánh sáng của tương lai.",
+                "Chúng tôi mang đến giải pháp chiếu sáng thông minh.",
+                "Cảm ơn Quý khách đã đồng hành cùng chúng tôi!"
+            ],
+            typeSpeed: 50,
+            backSpeed: 30,
+            loop: true
+        });
+
+        // Tạo đèn LED lấp lánh nền
+        for (let i = 0; i < 30; i++) {
+            const led = document.createElement("div");
+            led.classList.add("led");
+            led.style.top = Math.random() * 100 + "vh";
+            led.style.left = Math.random() * 100 + "vw";
+            led.style.animationDelay = Math.random() * 2 + "s";
+            document.body.appendChild(led);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+Files moved:
+- assets/logo.jpg -> assets/img/logo.jpg
+- assets/logo.svg -> assets/img/logo.svg
+- assets/favicon.svg -> assets/img/favicon.svg
+- assets/uploads/ -> assets/img/uploads/
+
+Note: This is an instruction file to record what the script did.
